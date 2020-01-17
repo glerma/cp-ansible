@@ -13,7 +13,6 @@ all:
     # sasl_protocol: scram
     ## For SASL/GSSAPI uncomment this line and see Kerberos Configuration properties below
     # sasl_protocol: kerberos
-
     #### Kerberos Configuration ####
     ## Applicable when sasl_protocol is kerberos
     # kerberos_kafka_broker_primary: <Name of the primary set on the kafka brokers' principal eg. kafka>
@@ -23,7 +22,6 @@ all:
     #   realm: <KDC server realm eg. confluent.example.com>
     #   kdc_hostname: <hostname of machine with KDC running eg. ip-172-31-45-82.us-east-2.compute.internal>
     #   admin_hostname: <hostname of machine with KDC running eg. ip-172-31-45-82.us-east-2.compute.internal>
-
     #### TLS Configuration ####
     ## By default, data will NOT be encrypted. To turn on TLS encryption, uncomment this line
     # ssl_enabled: true
@@ -46,7 +44,6 @@ all:
     # ssl_keystore_store_password: mystorepassword
     # ssl_truststore_filepath: "/tmp/certs/truststore.jks"
     # ssl_truststore_password: truststorepass
-
     #### Monitoring Configuration ####
     ## Jolokia is enabled by default. The Jolokia jar gets pulled from the internet and enabled on all the components
     ## To disable, uncomment this line:
@@ -58,21 +55,18 @@ all:
     # jmxexporter_enabled: true
     ## To update that jar download set this var
     # jmxexporter_jar_url: http://<internal-server>/jmx_prometheus_javaagent-0.12.0.jar
-
     #### Custom Yum Repo File (Rhel/Centos) ####
     ## If you are using your own yum repo server to host the packages, in the case of an air-gapped environment,
     ## use the below variables to distribute a custom .repo file to the hosts and skip our repo setup.
     ## Note, your repo server must host all confluent packages
     # custom_yum_repofile: true
     # custom_yum_repofile_filepath: /tmp/my-repo.repo
-
     #### Custom Apt Repo File (Ubuntu/Debian) ####
     ## If you are using your own apt repo server to host the packages, in the case of an air-gapped environment,
     ## use the below variables to distribute a custom .repo file to the hosts and skip our repo setup.
     ## Note, your repo server must host all confluent packages
     # custom_apt_repo: true
     # custom_apt_repo_filepath: "/tmp/my-source.list"
-
     #### Configuring Different Security on both Listeners ####
     ## CP-Ansible will configure two listeners on the broker: an internal listener for the broker to communicate and an external for the components and other clients.
     ## If you only need one listener uncomment this line:
@@ -99,7 +93,6 @@ all:
     #     ssl_enabled: true
     #     ssl_mutual_auth_enabled: true
     #     sasl_protocol: scram
-
     ## To set custom properties for each service
     ## Find property options in the Confluent Documentation
     # zookeeper:
@@ -130,7 +123,6 @@ zookeeper:
     ip-172-31-34-246.us-east-2.compute.internal:
       ## By default the first host will get zookeeper id=1, second gets id=2. Set zookeeper_id to customize
       # zookeeper_id: 2
-
       ## For kerberos sasl protocol, EACH host will need these two variables:
       # zookeeper_kerberos_keytab_path: <The path on ansible host to keytab file, eg. /tmp/keytabs/zookeeper-ip-172-31-34-246.us-east-2.compute.internal.keytab>
       # zookeeper_kerberos_principal: <The principal configured in kdc server, eg. zookeeper/ip-172-31-34-246.us-east-2.compute.internal@REALM.EXAMPLE.COM>
@@ -143,7 +135,6 @@ kafka_broker:
     ip-172-31-34-246.us-east-2.compute.internal:
       ## By default the first host will get broker id=1, second gets id=2. Set broker_id to customize
       # broker_id: 3
-
       ## For kerberos sasl protocol, EACH host will need these two variables:
       # kafka_broker_kerberos_keytab_path: <The path on ansible host to keytab file, eg. /tmp/keytabs/ip-172-31-34-246.us-east-2.compute.internal>
       # kafka_broker_kerberos_principal: <The principal configured in kdc server, eg. kafka/ip-172-31-34-246.us-east-2.compute.internal@REALM.EXAMPLE.COM>
